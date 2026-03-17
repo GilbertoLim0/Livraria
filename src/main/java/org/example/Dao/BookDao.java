@@ -12,9 +12,9 @@ import java.util.List;
 public class BookDao implements BookContract {
     @Override
     public Boolean createBook(Book book) throws SQLException {
-        String sql = """
-                INSERT (title, author, pages, read?, premium_content, id_category)
-                INTO books
+        String sql =
+                """
+                INSERT INTO books (title, author, pages, read?, premium_content, id_category)
                 VALUES (?, ?, ?, ?, ?, ?) 
                 """;
         try(Connection conn = DB.access()) {
