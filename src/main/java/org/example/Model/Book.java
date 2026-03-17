@@ -2,18 +2,20 @@ package org.example.Model;
 
 public class Book {
     private Integer id;
-    private String name;
+    private String title;
     private String author;
     private Integer pages;
-    private String synopsis;
+    private Boolean read;
+    private String premiumContent;
     private Category category;
 
-    public Book(Integer id, String name, String author, Integer pages, String synopsis, Category category) {
+    public Book(Integer id, String title, String author, Boolean read, Integer pages, String premiumContent, Category category) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.author = author;
         this.pages = pages;
-        this.synopsis = synopsis;
+        this.read = read;
+        this.premiumContent = premiumContent;
         this.category = category;
     }
 
@@ -23,34 +25,42 @@ public class Book {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getNome() {
-        return name;
+    public String getTitle() {
+        return title;
     }
-    public void setNome(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
-    public String getAutor() {
+    public String getAuthor() {
         return author;
     }
-    public void setAutor(String author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
-    public Integer getPaginas() {
+    public Integer getPages() {
         return pages;
     }
-    public void setPaginas(Integer pages) {
+    public void setPages(Integer pages) {
         this.pages = pages;
     }
-    public String getSinapse() {
-        return synopsis;
+    public String getpremiumContent() {
+        return premiumContent;
     }
-    public void setSinapse(String synopsis) {
-        this.synopsis = synopsis;
+    public void setpremiumContent(String premiumContent) {
+        this.premiumContent = premiumContent;
     }
-    public Category getCategoria() {
+    public Category getCategory() {
         return category;
     }
-    public void setCategoria(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Boolean getRead() {
+        return read;
+    }
+
+    public void setRead(Boolean read) {
+        this.read = read;
     }
 }
