@@ -1,4 +1,4 @@
 package org.example.Service;
 
-public class CategoriaService {
+public class BookService {
 }

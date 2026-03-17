@@ -1,19 +1,19 @@
 package org.example.Model;
 
-public class Categoria {
-    private String nome;
+public class Category {
+    private String name;
     private Integer id;
 
-    public Categoria(String nome, Integer id) {
-        this.nome = nome;
+    public Category(String name, Integer id) {
+        this.name = name;
         this.id = id;
     }
 
     public String getNome() {
-        return nome;
+        return name;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String name) {
+        this.name = name;
     }
     public Integer getId() {
         return id;

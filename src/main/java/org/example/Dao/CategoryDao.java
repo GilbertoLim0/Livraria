@@ -1,4 +1,4 @@
 package org.example.Dao;
 
-public class CategoriaDao {
+public class CategoryDao {
 }
