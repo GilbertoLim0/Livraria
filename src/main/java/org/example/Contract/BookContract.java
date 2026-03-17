@@ -1,7 +1,5 @@
 package org.example.Contract;
-
 import org.example.Model.Book;
-
 import java.sql.SQLException;
 import java.util.List;
 
