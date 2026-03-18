@@ -18,6 +18,14 @@ public class Book {
         this.premiumContent = premiumContent;
         this.category = category;
     }
+    public Book(Integer id, String title, String author, Boolean read, Integer pages, String premiumContent) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.premiumContent = premiumContent;
+    }
 
     public Integer getId() {
         return id;
