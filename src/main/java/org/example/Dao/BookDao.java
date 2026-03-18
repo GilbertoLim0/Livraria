@@ -15,8 +15,15 @@ public class BookDao implements BookContract {
     public Boolean createBook(Book book) throws SQLException {
         String sql =
                 """
-                INSERT INTO books (title, author, pages, read?, premium_content, id_category)
-                VALUES (?, ?, ?, ?, ?, ?);
+                    INSERT INTO books (
+                      title,
+                        author,
+                          pages,
+                            read,
+                              premium_content,
+                                id_category
+                    )
+                    VALUES ('titulo', 'jef', 10, True, 'dandanda', 1);
                 """;
         try(Connection conn = DB.access()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -33,8 +40,18 @@ public class BookDao implements BookContract {
 
     @Override
     public List<Book> readBook() throws SQLException {
-        String sql = """
-                
+        String sql =
+                """
+                    SELECT bk.id,
+                            bk.title,
+                              bk.author,
+                               bk.read,
+                                bk.pages,
+                                 bk.premium_content,
+                                  c.name
+                    FROM books bk
+                    JOIN categorys c
+                    ON c.id = bk.id_category;
                 """;
         try(Connection conn = DB.access()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -45,7 +62,7 @@ public class BookDao implements BookContract {
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("author"),
-                        rs.getBoolean("read?"),
+                        rs.getBoolean("read"),
                         rs.getInt("pages"),
                         rs.getString("premium_content")
                 );
@@ -59,11 +76,29 @@ public class BookDao implements BookContract {
 
     @Override
     public Book updateBook(Book book) throws SQLException {
+        String sql =
+                """
+                    UPDATE books
+                    set title = ?,
+                          author = ?,
+                            read = ?,
+                              pages = ?,
+                                premium_content = ?,
+                                  id_category = ?
+                    from categorys c
+                    where c.id = books.id_category AND id = ?
+                """;
         return null;
+
     }
 
     @Override
     public Boolean deleteBook(Book book) throws SQLException {
+        String sql =
+                """
+                    DELETE FROM books
+                    WHERE id = ?
+                """;
         return null;
     }
 }
