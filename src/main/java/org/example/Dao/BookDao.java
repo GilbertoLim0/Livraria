@@ -2,12 +2,14 @@ package org.example.Dao;
 
 import org.example.Contract.BookContract;
 import org.example.Model.Book;
+import org.example.Model.Category;
 import org.example.Util.DB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookDao implements BookContract {
@@ -39,7 +41,7 @@ public class BookDao implements BookContract {
     }
 
     @Override
-    public List<Book> readBook() throws SQLException {
+    public List<Book> readBook(Category categoryIdentifier) throws SQLException {
         String sql =
                 """
                     SELECT bk.id,
@@ -56,22 +58,22 @@ public class BookDao implements BookContract {
         try(Connection conn = DB.access()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-
+            List<Book> books = List.of();
             while(rs.next()) {
+
                 Book book = new Book(
                         rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("author"),
                         rs.getBoolean("read"),
                         rs.getInt("pages"),
-                        rs.getString("premium_content")
+                        rs.getString("premium_content"),
+                        categoryIdentifier
                 );
-                Integer categoryIdentifier = rs.getInt("id_category");
-
+                books.add(book);
             }
-
+            return books;
         }
-        return List.of();
     }
 
     @Override
