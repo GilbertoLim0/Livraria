@@ -47,10 +47,9 @@ public class BookDao implements BookContract {
                         rs.getString("author"),
                         rs.getBoolean("read?"),
                         rs.getInt("pages"),
-                        rs.getString("premium_content"),
-
-
+                        rs.getString("premium_content")
                 );
+                Integer categoryIdentifier = rs.getInt("id_category");
 
             }
 
