@@ -90,7 +90,18 @@ public class BookDao implements BookContract {
                     from categorys c
                     where c.id = books.id_category AND id = ?
                 """;
-        return null;
+        try(Connection conn = DB.access()) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, book.getTitle());
+            stmt.setString(2, book.getAuthor());
+            stmt.setBoolean(3, book.getRead());
+            stmt.setInt(4, book.getPages());
+            stmt.setString(5, book.getpremiumContent());
+            stmt.setInt(6, book.getCategory().getId());
+            stmt.executeUpdate();
+
+            return book;
+        }
 
     }
 
@@ -101,6 +112,11 @@ public class BookDao implements BookContract {
                     DELETE FROM books
                     WHERE id = ?
                 """;
+        try(Connection conn = DB.access()) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, book.getId());
+            stmt.executeUpdate();
+        }
         return null;
     }
 }
