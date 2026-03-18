@@ -7,6 +7,9 @@ import java.sql.SQLException;
 
 public class CategoryService {
     CategoryContract cc;
+    public CategoryService(CategoryContract cc) {
+        this.cc = cc;
+    }
     public void triggerCreateCategory(Category category) throws SQLException {
         cc.createCategory(category);
     }
