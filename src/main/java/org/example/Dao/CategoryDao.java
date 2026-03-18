@@ -73,7 +73,7 @@ public class CategoryDao implements CategoryContract {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, category.getId());
             stmt.executeUpdate();
+            return true;
         }
-        return null;
     }
 }
