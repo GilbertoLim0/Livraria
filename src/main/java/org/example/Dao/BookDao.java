@@ -6,6 +6,7 @@ import org.example.Util.DB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -32,6 +33,28 @@ public class BookDao implements BookContract {
 
     @Override
     public List<Book> readBook() throws SQLException {
+        String sql = """
+                
+                """;
+        try(Connection conn = DB.access()) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                Book book = new Book(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("author"),
+                        rs.getBoolean("read?"),
+                        rs.getInt("pages"),
+                        rs.getString("premium_content"),
+
+
+                );
+
+            }
+
+        }
         return List.of();
     }
 
