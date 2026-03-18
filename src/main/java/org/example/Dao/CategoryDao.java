@@ -30,7 +30,7 @@ public class CategoryDao implements CategoryContract {
     public List<Category> readCategory() throws SQLException {
         String sql =
                 """
-                    SELECT id, name= FROM categorys
+                    SELECT id, name FROM categorys
                 """;
         try(Connection conn = DB.access()) {
             PreparedStatement stmt = conn.prepareStatement(sql);

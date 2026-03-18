@@ -25,7 +25,7 @@ public class BookDao implements BookContract {
                               premium_content,
                                 id_category
                     )
-                    VALUES ('titulo', 'jef', 10, True, 'dandanda', 1);
+                    VALUES (?, ?, ?, ?, ?, ?);
                 """;
         try(Connection conn = DB.access()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
