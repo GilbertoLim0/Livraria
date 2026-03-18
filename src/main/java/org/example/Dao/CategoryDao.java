@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryDao implements CategoryContract {
@@ -34,7 +35,7 @@ public class CategoryDao implements CategoryContract {
         try(Connection conn = DB.access()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            List<Category> categories = List.of();
+            List<Category> categories = new ArrayList<>();
             while(rs.next()) {
                 Category category = new Category(
                         rs.getString("name"),

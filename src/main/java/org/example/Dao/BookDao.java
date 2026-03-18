@@ -58,7 +58,7 @@ public class BookDao implements BookContract {
         try(Connection conn = DB.access()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            List<Book> books = List.of();
+            List<Book> books = new ArrayList<>();
             while(rs.next()) {
 
                 Book book = new Book(
