@@ -15,7 +15,7 @@ public class BookDao implements BookContract {
         String sql =
                 """
                 INSERT INTO books (title, author, pages, read?, premium_content, id_category)
-                VALUES (?, ?, ?, ?, ?, ?) 
+                VALUES (?, ?, ?, ?, ?, ?);
                 """;
         try(Connection conn = DB.access()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
