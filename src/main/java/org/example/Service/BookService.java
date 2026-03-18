@@ -9,7 +9,6 @@ import java.sql.SQLException;
 
 public class BookService {
     BookContract bk;
-    CategoryContract cc;
     public void triggerCreateBook(Book book) throws SQLException {
         bk.createBook(book);
     }
